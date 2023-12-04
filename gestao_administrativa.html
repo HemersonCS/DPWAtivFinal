@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Administrativa - Banco Estudantil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./estilos.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body data-bs-theme="light">
+  <header>
+    <nav class="navbar-expand-lg navbar bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="./assets/logo.png" alt="Logo do banco estudantil"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img
+                src="./assets/logo-mobile.png" alt="Logo mobile do banco estudantil"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="modo-noturno">
+                    <label class="form-check-label" for="modo-noturno">Modo noturno</label>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+    <section class="banners banner-1 d-flex flex-column justify-content-center text-center">
+      <div class="banners-titulo bg-body-secondary py-5">
+        <h3 class="fw-bold">Bem-vindo à Gestão Administrativa</h3>
+        <p>Controle e gerencie as operações do Banco Estudantil.</p>
+      </div>
+    </section>
+
+    
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-4">Gestão de Usuários</h2>
+  
+        <!-- Botão para abrir o modal de criação de usuário -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#criarUsuarioModal">
+          Criar Novo Usuário
+        </button>
+  
+        <!-- Tabela para exibir os usuários -->
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaUsuarios">
+            <!-- Aqui será preenchido dinamicamente com os dados dos usuários -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  
+ <!-- Modal para criar novo usuário -->
+<div class="modal fade" id="criarUsuarioModal" tabindex="-1" aria-labelledby="criarUsuarioModalLabel"
+aria-hidden="true">
+<!-- ... (conteúdo do modal para criar usuário) ... -->
+</div>
+
+<!-- Modal para alterar usuário -->
+<div class="modal fade" id="alterarUsuarioModal" tabindex="-1" aria-labelledby="alterarUsuarioModalLabel"
+aria-hidden="true">
+<!-- ... (conteúdo do modal para alterar usuário) ... -->
+</div>
+
+<!-- Modal para consultar usuário -->
+<div class="modal fade" id="consultarUsuarioModal" tabindex="-1" aria-labelledby="consultarUsuarioModalLabel"
+aria-hidden="true">
+<!-- ... (conteúdo do modal para consultar usuário) ... -->
+</div>
+
+<!-- Modal para excluir usuário -->
+<div class="modal fade" id="excluirUsuarioModal" tabindex="-1" aria-labelledby="excluirUsuarioModalLabel"
+aria-hidden="true">
+<!-- ... (conteúdo do modal para excluir usuário) ... -->
+</div>

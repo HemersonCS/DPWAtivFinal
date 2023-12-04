@@ -1,24 +1,34 @@
-import express from "express";
-import conectaNaDatabase from "./config/dbConnect.js";
-import routes from "./routes/index.js";
+import { inputCheck, elemento } from "../script";
 
-const conexao = await conectaNaDatabase();
 
-conexao.on("error", (erro) => {
-  console.error("erro de conexão", erro);
-});
-
-conexao.once("open", () => {
-  console.log("Conexao com o banco feita com sucesso");
+inputCheck.addEventListener('click', () => {
+  const modo = inputCheck.checked ? 'dark' : 'light';
+  elemento.setAttribute("data-bs-theme", modo);
 })
 
-const app = express();
-routes(app);
+  < script >
+  async function cadastrar() {
+    const nome = document.getElementById('nome').value;
+    const matricula = document.getElementById('matricula').value;
+    const CPF = document.getElementById('CPF').value;
+    const CEP = document.getElementById('CEP').value;
+    const email = document.getElementById('email').value;
+    const Senha = document.getElementById('Senha').value;
 
-app.delete("/cadastros/:id", (req, res) => {
-  const index = buscaCadastro(req.params.id);
-  livros.splice(index, 1);
-  res.status(200).send("Cadastro removido com sucesso");
-});
+    try {
+      const response = await axios.post('http://localhost:8000/public/registrar', {
+        nome,
+        matricula,
+        CPF,
+        CEP,
+        email,
+        Senha,
+      });
 
-export default app;
+      // Lógica para lidar com a resposta do servidor (pode redirecionar, exibir mensagem, etc.)
+      console.log(response.data);
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error);
+      // Lógica para lidar com o erro (exibir mensagem de erro, etc.)
+    }
+  };

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco Estudantil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./estilos.css">
+  <--código acima oculto→
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    >   
+</head>
+<body data-bs-theme="light">          
+    <header>
+        <nav class="navbar-expand-lg navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="./assets/logo.png" alt="Logo do banco estudantil"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="./assets/logo-mobile.png" alt="Logo mobile do banco estudantil"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Início</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/gestao_administrativa.html#">Gestão Administrativa</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="modo-noturno">
+                                    <label class="form-check-label" for="modo-noturno">Modo noturno</label>
+                                  </div>
+                                </a>
+                              </li>
+                        </a>
+                      </li>
+                  </ul>
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+          
+    </header>
+
+    <main>
+       <section class="banners banner-1 d-flex flex-column justify-content-center text-center">
+          <div class="banners-titulo bg-body-secondary py-5">
+            <h3 class="fw-bold">Mais que um Banco, seu primeiro amigo. </h3>
+            <p>O Banco Popular Unifor tem como missão disponibilizar aos estudantes seu primeiro contato com uma instituição financeira onde ele poderá abrir sua primeira conta e iniciar seu planejamento financeiro.</p>
+          </div>
+        </section>
+
+        <section class="py-5">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="card" style="width: 24rem;">
+              <div class="card-body text-center">
+                <p class="card-text"></p>
+                <h2 class="text-center fw-bold pb-1">Faça seu Login!</h2>
+            <!--FORMULÁRIO DE LOGIN-->
+            
+            <div id="login">
+              <form id="loginForm">
+                <p> 
+                  <label for="nome_login">Seu nome</label>
+                  <input id="nome_login" name="nome_login" required="required" type="text" placeholder="ex. contato@htmlecsspro.com"/>
+                </p>
+                 
+                <p> 
+                  <label for="senha_login">senha_login</label>
+                  <input id="senha_login" name="senha_login" required="required" type="password" placeholder="ex. senha" /> 
+                </p>
+                <p> 
+                  <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
+                  <label for="manterlogado">Manter-me logado</label>
+                </p>
+                <button type="button" class="btn btn-primary" onclick="login()">Login</button> 
+                
+                <p class="link">
+                  Ainda não tem conta?
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastroModal">
+                    Cadastre-se
+                  </button>
+                </p> 
+                
+                
+              </form>
+            </div>
+          </div>
+            
+    </section>
+    
+    <script>
+      function mostrarCadastro() {
+        // Oculta a seção de login
+        document.getElementById('login').style.display = 'none';
+        
+        // Exibe a seção de cadastro
+        document.getElementById('cadastro').style.display = 'block';
+      }
+    </script>
+    
+
+    </main>
+       
+    </main>
+
+    
+    <div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cadastroModalLabel">Cadastro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/processar_cadastro" method="post">
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="matricula" class="form-label">Matrícula do Estudante:</label>
+                <input type="text" id="matricula" name="matricula" class="form-control" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="CPF" class="form-label">CPF:</label>
+                <input type="text" id="CPF" name="CPF" class="form-control" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="CEP" class="form-label">CEP:</label>
+                <input type="text" id="CEP" name="CEP" class="form-control" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+              
+              </form>
+              <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <script>
+      function mostrarCadastro() {
+        // Feche o modal de login, se estiver aberto
+        $('#cadastroModal').modal('hide');
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+    </html>
